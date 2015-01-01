@@ -1,0 +1,16 @@
+[package]
+
+name = "midi"
+version = "0.0.1"
+authors = ["Sam Doshi <sam@metal-fish.co.uk>"]
+license = "MIT"
+description = "Common Midi types for Rust"
+homepage = "https://github.com/samdoshi/midi-rs"
+repository = "https://github.com/samdoshi/midi-rs"
+keywords = ["midi", "music", "audio"]
+
+[dev-dependencies.quickcheck]
+version = "*"
+
+[dev-dependencies.quickcheck_macros]
+version = "*"
