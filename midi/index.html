@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `midi` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, midi">
+
+    <title>midi - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>midi</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/midi/lib.rs.html#6-35'>[src]</a></span></h1>
+<div class='docblock'><p>Midi types and traits for Rust</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use Channel::{<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch1</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch2</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch3</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch4</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch5</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch6</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch7</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch8</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch9</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch10</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch11</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch12</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch13</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch14</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch15</a>, <a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Ch16</a>};</code></td></tr><tr><td><code>pub use RawMessage::{<a class='enum' href='../midi/enum.RawMessage.html' title='midi::RawMessage'>Status</a>, <a class='enum' href='../midi/enum.RawMessage.html' title='midi::RawMessage'>StatusData</a>, <a class='enum' href='../midi/enum.RawMessage.html' title='midi::RawMessage'>StatusDataData</a>, <a class='enum' href='../midi/enum.RawMessage.html' title='midi::RawMessage'>Raw</a>};</code></td></tr><tr><td><code>pub use Message::{<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Start</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>TimingClock</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Continue</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Stop</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>ActiveSensing</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>SystemReset</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>AllSoundOff</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>ResetAllControllers</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>LocalControlOff</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>LocalControlOn</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>AllNotesOff</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>NoteOff</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>ProgramChange</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>ControlChange</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>RPN7</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>RPN14</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>NRPN7</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>NRPN14</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>SysEx</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>NoteOn</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>PitchBend</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>PolyphonicPressure</a>, <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>ChannelPressure</a>};</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='constants/index.html'
+                               title='midi::constants'>constants</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='utils/index.html'
+                               title='midi::utils'>utils</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Channel.html'
+                               title='midi::Channel'>Channel</a></td>
+                        <td class='docblock short'><p>Represents a Midi channel</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Manufacturer.html'
+                               title='midi::Manufacturer'>Manufacturer</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Message.html'
+                               title='midi::Message'>Message</a></td>
+                        <td class='docblock short'><p>Defines the various Midi messages that can be sent</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.RawMessage.html'
+                               title='midi::RawMessage'>RawMessage</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ToRawMessages.html'
+                               title='midi::ToRawMessages'>ToRawMessages</a></td>
+                        <td class='docblock short'><p>Convert <code>self</code> to <code>Vec&lt;RawMessage&gt;</code></p>
+</td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.U14.html'
+                               title='midi::U14'>U14</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.U7.html'
+                               title='midi::U7'>U7</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "midi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

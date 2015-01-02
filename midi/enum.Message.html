@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Message` enum in crate `midi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Message">
+
+    <title>midi::Message - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>midi</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='constants/index.html'>constants</a><a class='mod ' href='utils/index.html'>utils</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.Channel.html'>Channel</a><a class='enum ' href='enum.Manufacturer.html'>Manufacturer</a><a class='enum current' href='enum.Message.html'>Message</a><a class='enum ' href='enum.RawMessage.html'>RawMessage</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.ToRawMessages.html'>ToRawMessages</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>midi</a>::<wbr><a class='enum' href=''>Message</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5350' href='../src/midi/message.rs.html#15-133'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Message {
+    Start,
+    TimingClock,
+    Continue,
+    Stop,
+    ActiveSensing,
+    SystemReset,
+    AllSoundOff(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>),
+    ResetAllControllers(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>),
+    LocalControlOff(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>),
+    LocalControlOn(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>),
+    AllNotesOff(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>),
+    NoteOff(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    ProgramChange(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    ControlChange(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    RPN7(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    RPN14(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>),
+    NRPN7(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    NRPN14(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>),
+    SysEx(<a class='enum' href='../midi/enum.Manufacturer.html' title='midi::Manufacturer'>Manufacturer</a>, <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>&gt;),
+    NoteOn(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    PitchBend(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U14.html' title='midi::U14'>U14</a>),
+    PolyphonicPressure(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+    ChannelPressure(<a class='enum' href='../midi/enum.Channel.html' title='midi::Channel'>Channel</a>, <a class='type' href='../midi/type.U7.html' title='midi::U7'>U7</a>),
+}</pre><div class='docblock'><p>Defines the various Midi messages that can be sent</p>
+
+<p>The variants are ordered such that they may be sorted and sent in a sensible order when they
+occur at the same time, thus <code>NoteOff</code> before <code>NoteOn</code>, <code>Start</code> before <code>TimingClock</code>,
+<code>ControlChange</code> and <code>ProgramChange</code> before <code>NoteOn</code>, etc, etc</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Start'><a class='stability Unmarked' title='No stability level'></a><code>Start</code></td><td><div class='docblock'><p>Start. Start the current sequence playing.
+(This message will be followed with Timing Clocks).</p>
+</div></td></tr><tr><td id='variant.TimingClock'><a class='stability Unmarked' title='No stability level'></a><code>TimingClock</code></td><td><div class='docblock'><p>Timing Clock. Sent 24 times per quarter note when synchronization
+is required.</p>
+</div></td></tr><tr><td id='variant.Continue'><a class='stability Unmarked' title='No stability level'></a><code>Continue</code></td><td><div class='docblock'><p>Continue. Continue at the point the sequence was Stopped</p>
+</div></td></tr><tr><td id='variant.Stop'><a class='stability Unmarked' title='No stability level'></a><code>Stop</code></td><td><div class='docblock'><p>Stop. Stop the current sequence.</p>
+</div></td></tr><tr><td id='variant.ActiveSensing'><a class='stability Unmarked' title='No stability level'></a><code>ActiveSensing</code></td><td><div class='docblock'><p>Active Sensing. This message is intended to be sent repeatedly to tell the receiver that a
+connection is alive. Use of this message is optional. When initially received, the receiver
+will expect to receive another Active Sensing message each 300ms (max), and if it does not
+then it will assume that the connection has been terminated. At termination, the receiver
+will turn off all voices and return to normal (non- active sensing) operation.</p>
+</div></td></tr><tr><td id='variant.SystemReset'><a class='stability Unmarked' title='No stability level'></a><code>SystemReset</code></td><td><div class='docblock'><p>Reset. Reset all receivers in the system to power-up status. This should be used sparingly,
+preferably under manual control. In particular, it should not be sent on power-up.</p>
+</div></td></tr><tr><td id='variant.AllSoundOff'><a class='stability Unmarked' title='No stability level'></a><code>AllSoundOff</code></td><td><div class='docblock'><p>All Sound Off. When All Sound Off is received all oscillators will turn off, and their
+volume envelopes are set to zero as soon as possible.</p>
+</div></td></tr><tr><td id='variant.ResetAllControllers'><a class='stability Unmarked' title='No stability level'></a><code>ResetAllControllers</code></td><td><div class='docblock'><p>Reset All Controllers. When Reset All Controllers is received, all controller values are
+reset to their default values. (See specific Recommended Practices for defaults).</p>
+</div></td></tr><tr><td id='variant.LocalControlOff'><a class='stability Unmarked' title='No stability level'></a><code>LocalControlOff</code></td><td><div class='docblock'><p>When Local Control is Off, all devices on a given channel will respond only to data
+received over MIDI. Played data, etc. will be ignored.</p>
+</div></td></tr><tr><td id='variant.LocalControlOn'><a class='stability Unmarked' title='No stability level'></a><code>LocalControlOn</code></td><td><div class='docblock'><p>Local Control On restores the functions of the normal controllers.</p>
+</div></td></tr><tr><td id='variant.AllNotesOff'><a class='stability Unmarked' title='No stability level'></a><code>AllNotesOff</code></td><td><div class='docblock'><p>All Notes Off. When an All Notes Off is received, all oscillators will turn off.</p>
+
+<p>(if you need to use one of the more obsure all notes off modes, send the direct
+<code>ControlChange</code> message</p>
+</div></td></tr><tr><td id='variant.NoteOff'><a class='stability Unmarked' title='No stability level'></a><code>NoteOff</code></td><td><div class='docblock'><p>Note Off event. This message is sent when a note is released (ended).
+The second argument is the key (note) number.
+The third argument is the velocity.</p>
+</div></td></tr><tr><td id='variant.ProgramChange'><a class='stability Unmarked' title='No stability level'></a><code>ProgramChange</code></td><td><div class='docblock'><p>Program Change. This message sent when the patch number changes.
+The second argument is the new program number.</p>
+</div></td></tr><tr><td id='variant.ControlChange'><a class='stability Unmarked' title='No stability level'></a><code>ControlChange</code></td><td><div class='docblock'><p>Control Change.  This message is sent when a controller value changes.
+The second argument is the controller number (0-119, though 0-127 is allowed).
+The third argument is the controller value (0-127).</p>
+</div></td></tr><tr><td id='variant.RPN7'><a class='stability Unmarked' title='No stability level'></a><code>RPN7</code></td><td><div class='docblock'><p>7-bit RPN. This message is sent when a 7-bit RPN changes.
+The second argument is the RPN.
+The third argument is the value.</p>
+</div></td></tr><tr><td id='variant.RPN14'><a class='stability Unmarked' title='No stability level'></a><code>RPN14</code></td><td><div class='docblock'><p>14-bit RPN. This message is sent when a 14-bit RPN changes.
+The second argument is the RPN.
+The third argument is the value.</p>
+</div></td></tr><tr><td id='variant.NRPN7'><a class='stability Unmarked' title='No stability level'></a><code>NRPN7</code></td><td><div class='docblock'><p>7-bit NRPN. This message is sent when a 7-bit NRPN changes.
+The second argument is the NRPN.
+The third argument is the value.</p>
+</div></td></tr><tr><td id='variant.NRPN14'><a class='stability Unmarked' title='No stability level'></a><code>NRPN14</code></td><td><div class='docblock'><p>14-bit NRPN. This message is sent when a 14-bit NRPN changes.
+The second argument is the NRPN.
+The third argument is the value.</p>
+</div></td></tr><tr><td id='variant.SysEx'><a class='stability Unmarked' title='No stability level'></a><code>SysEx</code></td><td><div class='docblock'><p>System Exclusive. This message type allows manufacturers to create their own messages (such
+as bulk dumps, patch parameters, and other non-spec data) and provides a mechanism for
+creating additional MIDI Specification messages.
+The first argument indicates the manufacturer.
+The second argument contains the data (without the <code>F0</code> header, or <code>F7</code> terminator).</p>
+</div></td></tr><tr><td id='variant.NoteOn'><a class='stability Unmarked' title='No stability level'></a><code>NoteOn</code></td><td><div class='docblock'><p>Note On event. This message is sent when a note is depressed (start).
+The second argument is the key (note) number.
+The third is the velocity.</p>
+</div></td></tr><tr><td id='variant.PitchBend'><a class='stability Unmarked' title='No stability level'></a><code>PitchBend</code></td><td><div class='docblock'><p>Pitch Bend Change. This message is sent to indicate a change in the pitch bender
+(wheel or lever, typically). The pitch bender is measured by a fourteen bit value. Center
+(no pitch change) is 2000H.</p>
+</div></td></tr><tr><td id='variant.PolyphonicPressure'><a class='stability Unmarked' title='No stability level'></a><code>PolyphonicPressure</code></td><td><div class='docblock'><p>Polyphonic Key Pressure (Aftertouch). This message is most often sent by pressing down
+on the key after it &quot;bottoms out&quot;.
+The second argument is the key (note) number.
+The third argument is the pressure value.</p>
+</div></td></tr><tr><td id='variant.ChannelPressure'><a class='stability Unmarked' title='No stability level'></a><code>ChannelPressure</code></td><td><div class='docblock'><p>Channel Pressure (Aftertouch). This message is most often sent by pressing down on the key
+after it &quot;bottoms out&quot;. This message is different from polyphonic after-touch. Use this
+message to send the single greatest pressure value (of all the current depressed keys).
+The second argument is the pressure value.</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../midi/trait.ToRawMessages.html' title='midi::ToRawMessages'>ToRawMessages</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.to_raw_messages' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.to_raw_messages' class='fnname'>to_raw_messages</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../midi/enum.RawMessage.html' title='midi::RawMessage'>RawMessage</a>&gt;</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html' title='core::cmp::PartialOrd'>PartialOrd</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.partial_cmp' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.partial_cmp' class='fnname'>partial_cmp</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='http://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html' title='core::cmp::Ordering'>Ordering</a>&gt;</code></h4>
+<h4 id='method.lt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.lt' class='fnname'>lt</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.le' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.le' class='fnname'>le</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.gt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.gt' class='fnname'>gt</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ge' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.ge' class='fnname'>ge</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.cmp' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.cmp' class='fnname'>cmp</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html' title='core::cmp::Ordering'>Ordering</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.assert_receiver_is_total_eq' class='tymethod'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#tymethod.assert_receiver_is_total_eq' class='fnname'>assert_receiver_is_total_eq</a>(&amp;self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h4>
+<h4 id='method.clone_from' class='tymethod'><a class='stability Unstable' title='Unstable: this function is rarely used'></a><code>fn <a href='#tymethod.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Unstable' title='Unstable: I/O and core have yet to be reconciled'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Show.html' title='core::fmt::Show'>Show</a> for <a class='enum' href='../midi/enum.Message.html' title='midi::Message'>Message</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Unstable' title='Unstable: I/O and core have yet to be reconciled'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "midi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

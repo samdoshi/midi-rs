@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `utils` mod in crate `midi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, utils">
+
+    <title>midi::utils - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>midi</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../constants/index.html'>constants</a><a class='mod current' href='../utils/index.html'>utils</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.Channel.html'>Channel</a><a class='enum ' href='../enum.Manufacturer.html'>Manufacturer</a><a class='enum ' href='../enum.Message.html'>Message</a><a class='enum ' href='../enum.RawMessage.html'>RawMessage</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.ToRawMessages.html'>ToRawMessages</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>midi</a>::<wbr><a class='mod' href=''>utils</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-160' href='../../src/midi/utils.rs.html#6-139'>[src]</a></span></h1>
+<h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.from_status_byte.html'
+                               title='midi::utils::from_status_byte'>from_status_byte</a></td>
+                        <td class='docblock short'><p>Seperate the status from the channel no.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mask14.html'
+                               title='midi::utils::mask14'>mask14</a></td>
+                        <td class='docblock short'><p>14 bit mask</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mask7.html'
+                               title='midi::utils::mask7'>mask7</a></td>
+                        <td class='docblock short'><p>7 bit mask</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.msb_lsb_to_u14.html'
+                               title='midi::utils::msb_lsb_to_u14'>msb_lsb_to_u14</a></td>
+                        <td class='docblock short'><p>Convert an MSB and LSB to a <code>U14</code></p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.status_byte.html'
+                               title='midi::utils::status_byte'>status_byte</a></td>
+                        <td class='docblock short'><p>Calculate the status byte for a given channel no.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.u14_to_msb_lsb.html'
+                               title='midi::utils::u14_to_msb_lsb'>u14_to_msb_lsb</a></td>
+                        <td class='docblock short'><p>Extract the MSB and LSB from a <code>U14</code></p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "midi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
