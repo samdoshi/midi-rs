@@ -30,7 +30,7 @@ pub fn u14_to_msb_lsb(input: U14) -> (U7, U7) {
 /// Convert an MSB and LSB to a `U14`
 #[inline]
 pub fn msb_lsb_to_u14(msb: U7, lsb: U7) -> U14 {
-    (mask7(msb) as U14 << 7) + mask7(lsb) as U14
+    ((mask7(msb) as U14) << 7) + mask7(lsb) as U14
 }
 
 /// Calculate the status byte for a given channel no.

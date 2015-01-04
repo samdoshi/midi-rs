@@ -11,7 +11,7 @@ pub type U14 = u16;
 /// Represents a Midi channel
 ///
 /// Note than `Ch1 = 0`, `Ch2 = 1`, etc, as the actual protocol is 0-indexed.
-#[deriving(Show, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, FromPrimitive, Rand)]
+#[derive(Show, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, FromPrimitive, Rand)]
 pub enum Channel {
     Ch1  = 0 , Ch2  = 1 ,  Ch3 = 2 ,  Ch4 = 3 ,
     Ch5  = 4 , Ch6  = 5 ,  Ch7 = 6 ,  Ch8 = 7 ,
