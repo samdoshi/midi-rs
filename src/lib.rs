@@ -5,10 +5,10 @@
 
 //! Midi types and traits for Rust
 
-#![feature(globs, phase)]
+#![feature(plugin)]
 
 #[cfg(test)] extern crate test;
-#[cfg(test)] #[phase(plugin)] extern crate quickcheck_macros;
+#[cfg(test)] #[plugin] #[no_link] extern crate quickcheck_macros;
 #[cfg(test)] extern crate quickcheck;
 
 pub use types::{Channel, U7, U14};
