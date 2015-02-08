@@ -5,7 +5,10 @@
 
 //! Midi types and traits for Rust
 
-#![feature(plugin)]
+#![feature(plugin, core, hash, collections)]
+
+#[plugin] #[no_link] extern crate rand_macros;
+extern crate rand;
 
 #[cfg(test)] extern crate test;
 #[cfg(test)] #[plugin] #[no_link] extern crate quickcheck_macros;

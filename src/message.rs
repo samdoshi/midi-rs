@@ -11,7 +11,7 @@ use manufacturer::Manufacturer;
 /// The variants are ordered such that they may be sorted and sent in a sensible order when they
 /// occur at the same time, thus `NoteOff` before `NoteOn`, `Start` before `TimingClock`,
 /// `ControlChange` and `ProgramChange` before `NoteOn`, etc, etc
-#[derive(Show, Clone, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Message {
     // System realtime
     // ---------------

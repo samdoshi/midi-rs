@@ -5,7 +5,7 @@
 
 use types::U7;
 
-#[derive(Show, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub enum Manufacturer {
     OneByte(U7),
     ThreeByte(U7, U7, U7)

@@ -5,7 +5,7 @@
 
 use types::U7;
 
-#[derive(Show, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub enum RawMessage {
     Status(u8),
     StatusData(u8, U7),
