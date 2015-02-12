@@ -1,7 +1,7 @@
 [package]
 
 name = "midi"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Sam Doshi <sam@metal-fish.co.uk>"]
 license = "MIT"
 description = "Common Midi types for Rust"

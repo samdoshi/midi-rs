@@ -6,12 +6,13 @@
 //! Midi types and traits for Rust
 
 #![feature(plugin, core, hash, collections)]
+#![cfg(test)] #![feature(test)]
 
-#[plugin] #[no_link] extern crate rand_macros;
+#![plugin(rand_macros)]
+#![cfg(test)] #![plugin(quickcheck_macros)]
+
 extern crate rand;
-
 #[cfg(test)] extern crate test;
-#[cfg(test)] #[plugin] #[no_link] extern crate quickcheck_macros;
 #[cfg(test)] extern crate quickcheck;
 
 pub use types::{Channel, U7, U14};
