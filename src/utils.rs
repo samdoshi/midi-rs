@@ -50,6 +50,7 @@ pub fn from_status_byte(sb: u8) -> (u8, Channel) {
 
 #[cfg(test)]
 mod tests {
+    use quickcheck::QuickCheck;
     use quickcheck::TestResult;
     use super::*;
     use constants::*;
@@ -63,7 +64,11 @@ mod tests {
         assert_eq!(126, mask7(126));
     }
 
-    #[quickcheck]
+    #[test]
+    fn test_qc_mask7() {
+        QuickCheck::new().tests(1000).quickcheck(qc_mask7 as fn(u8) -> TestResult);
+    }
+
     fn qc_mask7(input: u8) -> TestResult {
         if input > 127 {
             TestResult::from_bool(mask7(input) == input - 128)
@@ -81,7 +86,11 @@ mod tests {
         assert_eq!(16382, mask14(16382));
     }
 
-    #[quickcheck]
+    #[test]
+    fn test_qc_mask14() {
+        QuickCheck::new().tests(10000).quickcheck(qc_mask14 as fn(u16) -> TestResult);
+    }
+
     fn qc_mask14(input: u16) -> TestResult {
         if input > 16383 {
             TestResult::discard()
@@ -108,7 +117,11 @@ mod tests {
         assert_eq!((0, 24), u14_to_msb_lsb(24));
     }
 
-    #[quickcheck]
+    #[test]
+    fn test_qc_msb_lsb() {
+        QuickCheck::new().tests(10000).quickcheck(qc_msb_lsb as fn(u16) -> TestResult);
+    }
+
     fn qc_msb_lsb(input: u16) -> TestResult {
         let masked = mask14(input);
         let (msb, lsb) = u14_to_msb_lsb(masked);
@@ -126,7 +139,11 @@ mod tests {
         assert_eq!((NOTE_ON, Channel::Ch12), from_status_byte(155));
     }
 
-    #[quickcheck]
+    #[test]
+    fn test_qc_status_byte() {
+        QuickCheck::new().tests(1000).quickcheck(qc_status_byte as fn(u8, Channel) -> TestResult);
+    }
+
     fn qc_status_byte(status: u8, channel: Channel) -> TestResult {
         if status >= 16 {
             TestResult::discard()

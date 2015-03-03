@@ -16,6 +16,3 @@ rand_macros = "*"
 
 [dev-dependencies.quickcheck]
 version = "*"
-
-[dev-dependencies.quickcheck_macros]
-version = "*"
