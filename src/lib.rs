@@ -5,8 +5,7 @@
 
 //! Midi types and traits for Rust
 
-#![feature(plugin, core, collections)]
-#![cfg(test)] #![feature(test)]
+#![feature(plugin, core, collections, test, custom_derive)]
 
 #![plugin(rand_macros)]
 
