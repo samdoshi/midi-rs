@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["ToRawMessages","Convert `self` to `Vec<RawMessage>`"]]});

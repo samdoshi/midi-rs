@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Channel","Represents a Midi channel"]],"type":[["U14",""],["U7",""]]});

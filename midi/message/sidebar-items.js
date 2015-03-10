@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Message","Defines the various Midi messages that can be sent"]]});

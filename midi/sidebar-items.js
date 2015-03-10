@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["ToRawMessages","Convert `self` to `Vec<RawMessage>`"]],"enum":[["Channel","Represents a Midi channel"],["Manufacturer",""],["Message","Defines the various Midi messages that can be sent"],["RawMessage",""]],"type":[["U14",""],["U7",""]],"mod":[["constants",""],["utils",""]]});
