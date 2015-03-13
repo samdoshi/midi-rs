@@ -126,3 +126,134 @@ fn cc(ch: Channel, cc_no: U7, val: U7) -> RawMessage {
     let sb = status_byte(CONTROL_CHANGE, ch);
     StatusDataData(sb, cc_no, val)
 }
+
+#[cfg(test)]
+mod test {
+    use super::ToRawMessages;
+    use message::Message::*;
+    use raw_message::RawMessage::*;
+    use manufacturer::Manufacturer::*;
+    use types::Channel::*;
+
+    #[test]
+    fn test_message_to_raw_messages() {
+        // Where possible these numbers have been pasted in from
+        // http://www.midi.org/techspecs/midimessages.php
+
+        // Start
+        assert_eq!(Start.to_raw_messages(), vec![Status(0b11111010)]);
+
+        // TimingClock
+        assert_eq!(TimingClock.to_raw_messages(), vec![Status(0b11111000)]);
+
+        // Continue
+        assert_eq!(Continue.to_raw_messages(), vec![Status(0b11111011)]);
+
+        // Stop
+        assert_eq!(Stop.to_raw_messages(), vec![Status(0b11111100)]);
+
+        // ActiveSensing
+        assert_eq!(ActiveSensing.to_raw_messages(), vec![Status(0b11111110)]);
+
+        // SystemReset
+        assert_eq!(SystemReset.to_raw_messages(), vec![Status(0b11111111)]);
+
+        // AllSoundOff
+        assert_eq!(AllSoundOff(Ch1).to_raw_messages(), vec![StatusDataData(176, 120, 0)]);
+
+        // ResetAllControllers
+        assert_eq!(ResetAllControllers(Ch1).to_raw_messages(), vec![StatusDataData(176, 121, 0)]);
+
+        // LocalControlOff
+        assert_eq!(LocalControlOff(Ch1).to_raw_messages(), vec![StatusDataData(176, 122, 0)]);
+
+        // LocalControlOn
+        assert_eq!(LocalControlOn(Ch1).to_raw_messages(), vec![StatusDataData(176, 122, 127)]);
+
+        // AllNotesOff
+        assert_eq!(AllNotesOff(Ch1).to_raw_messages(), vec![StatusDataData(176, 123, 0)]);
+
+        // ProgramChange
+        assert_eq!(ProgramChange(Ch1, 0).to_raw_messages(), vec![StatusData(192, 0)]);
+        assert_eq!(ProgramChange(Ch1, 127).to_raw_messages(), vec![StatusData(192, 127)]);
+        assert_eq!(ProgramChange(Ch1, 128).to_raw_messages(), vec![StatusData(192, 0)]);
+
+        // ControlChange
+        assert_eq!(ControlChange(Ch1, 0, 0).to_raw_messages(), vec![StatusDataData(176, 0, 0)]);
+        assert_eq!(ControlChange(Ch1, 0, 127).to_raw_messages(), vec![StatusDataData(176, 0, 127)]);
+        assert_eq!(ControlChange(Ch1, 0, 128).to_raw_messages(), vec![StatusDataData(176, 0, 0)]);
+        assert_eq!(ControlChange(Ch1, 127, 0).to_raw_messages(), vec![StatusDataData(176, 127, 0)]);
+        assert_eq!(ControlChange(Ch1, 128, 0).to_raw_messages(), vec![StatusDataData(176, 0, 0)]);
+
+        // RPN7
+        assert_eq!(RPN7(Ch1, 1000, 0).to_raw_messages(), vec![StatusDataData(176, 101, 7),
+                                                              StatusDataData(176, 100, 104),
+                                                              StatusDataData(176, 6, 0)]);
+
+        // RPN14
+        assert_eq!(RPN14(Ch1, 1000, 1001).to_raw_messages(), vec![StatusDataData(176, 101, 7),
+                                                                  StatusDataData(176, 100, 104),
+                                                                  StatusDataData(176, 6, 7),
+                                                                  StatusDataData(176, 38, 105)]);
+
+        // NRPN7
+        assert_eq!(NRPN7(Ch1, 1000, 0).to_raw_messages(), vec![StatusDataData(176, 99, 7),
+                                                               StatusDataData(176, 98, 104),
+                                                               StatusDataData(176, 6, 0)]);
+
+        // NRPN14
+        assert_eq!(NRPN14(Ch1, 1000, 1001).to_raw_messages(), vec![StatusDataData(176, 99, 7),
+                                                                   StatusDataData(176, 98, 104),
+                                                                   StatusDataData(176, 6, 7),
+                                                                   StatusDataData(176, 38, 105)]);
+
+        // SysEx
+        assert_eq!(SysEx(OneByte(100), vec![1, 2, 3, 4]).to_raw_messages(),
+                   vec![Raw(0b11110000),
+                        Raw(100),
+                        Raw(1), Raw(2), Raw(3), Raw(4),
+                        Raw(0b11110111)]);
+
+        assert_eq!(SysEx(OneByte(128), vec![1, 2, 3, 4, 128]).to_raw_messages(),
+                   vec![Raw(0b11110000),
+                        Raw(0),
+                        Raw(1), Raw(2), Raw(3), Raw(4), Raw(0),
+                        Raw(0b11110111)]);
+
+        assert_eq!(SysEx(ThreeByte(100, 101, 128), vec![1, 2, 3, 4]).to_raw_messages(),
+                   vec![Raw(0b11110000),
+                        Raw(100), Raw(101), Raw(0),
+                        Raw(1), Raw(2), Raw(3), Raw(4),
+                        Raw(0b11110111)]);
+
+        // NoteOff
+        assert_eq!(NoteOff(Ch1, 0, 0).to_raw_messages(), vec![StatusDataData(128, 0, 0)]);
+        assert_eq!(NoteOff(Ch2, 127, 127).to_raw_messages(), vec![StatusDataData(129, 127, 127)]);
+        assert_eq!(NoteOff(Ch3, 128, 128).to_raw_messages(), vec![StatusDataData(130, 0, 0)]);
+
+        // NoteOn
+        assert_eq!(NoteOn(Ch4, 0, 0).to_raw_messages(), vec![StatusDataData(147, 0, 0)]);
+        assert_eq!(NoteOn(Ch5, 127, 127).to_raw_messages(), vec![StatusDataData(148, 127, 127)]);
+        assert_eq!(NoteOn(Ch6, 128, 128).to_raw_messages(), vec![StatusDataData(149, 0, 0)]);
+
+        // PitchBend
+        assert_eq!(PitchBend(Ch7, 0).to_raw_messages(), vec![StatusDataData(230, 0, 0)]);
+        assert_eq!(PitchBend(Ch8, 1000).to_raw_messages(), vec![StatusDataData(231, 104, 7)]);
+        assert_eq!(PitchBend(Ch9, 45000).to_raw_messages(), vec![StatusDataData(232, 72, 95)]);
+        assert_eq!(PitchBend(Ch10, 12232).to_raw_messages(), vec![StatusDataData(233, 72, 95)]);
+
+        // PolyphonicPressure
+        assert_eq!(PolyphonicPressure(Ch11, 0, 0).to_raw_messages(),
+                   vec![StatusDataData(170, 0, 0)]);
+        assert_eq!(PolyphonicPressure(Ch12, 127, 127).to_raw_messages(),
+                   vec![StatusDataData(171, 127, 127)]);
+        assert_eq!(PolyphonicPressure(Ch13, 128, 128).to_raw_messages(),
+                   vec![StatusDataData(172, 0, 0)]);
+
+        // ChannelPressure
+        assert_eq!(ChannelPressure(Ch14, 0).to_raw_messages(), vec![StatusData(221, 0)]);
+        assert_eq!(ChannelPressure(Ch15, 127).to_raw_messages(), vec![StatusData(222, 127)]);
+        assert_eq!(ChannelPressure(Ch16, 128).to_raw_messages(), vec![StatusData(223, 0)]);
+    }
+}
+
