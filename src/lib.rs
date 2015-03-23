@@ -7,11 +7,7 @@
 
 #![feature(plugin, core, collections, test, custom_derive)]
 
-#![plugin(rand_macros)]
-
-extern crate rand;
 #[cfg(test)] extern crate test;
-#[cfg(test)] extern crate quickcheck;
 
 pub use types::{Channel, U7, U14};
 pub use Channel::{Ch1,  Ch2,  Ch3,  Ch4,  Ch5,  Ch6,  Ch7,  Ch8,

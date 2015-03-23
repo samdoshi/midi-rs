@@ -50,8 +50,6 @@ pub fn from_status_byte(sb: u8) -> (u8, Channel) {
 
 #[cfg(test)]
 mod tests {
-    use quickcheck::QuickCheck;
-    use quickcheck::TestResult;
     use super::*;
     use constants::*;
     use types::Channel;
@@ -65,16 +63,14 @@ mod tests {
     }
 
     #[test]
-    fn test_qc_mask7() {
-        QuickCheck::new().tests(1000).quickcheck(qc_mask7 as fn(u8) -> TestResult);
-    }
-
-    fn qc_mask7(input: u8) -> TestResult {
-        if input > 127 {
-            TestResult::from_bool(mask7(input) == input - 128)
-        }
-        else {
-            TestResult::from_bool(mask7(input) == input)
+    fn test_all_mask7() {
+        for i in 0..255 { // should be 0..256
+            if i > 127 {
+                assert_eq!(mask7(i), i - 128);
+            }
+            else {
+                assert_eq!(mask7(i), i);
+            }
         }
     }
 
@@ -87,16 +83,14 @@ mod tests {
     }
 
     #[test]
-    fn test_qc_mask14() {
-        QuickCheck::new().tests(10000).quickcheck(qc_mask14 as fn(u16) -> TestResult);
-    }
-
-    fn qc_mask14(input: u16) -> TestResult {
-        if input > 16383 {
-            TestResult::discard()
-        }
-        else {
-            TestResult::from_bool(mask14(input) == input)
+    fn test_all_mask14() {
+        for i in 0..65535 { // should be 0..65536
+            if i > 16383 {
+                assert!(mask14(i) != i);
+            }
+            else {
+                assert_eq!(mask14(i), i);
+            }
         }
     }
 
@@ -118,14 +112,11 @@ mod tests {
     }
 
     #[test]
-    fn test_qc_msb_lsb() {
-        QuickCheck::new().tests(10000).quickcheck(qc_msb_lsb as fn(u16) -> TestResult);
-    }
-
-    fn qc_msb_lsb(input: u16) -> TestResult {
-        let masked = mask14(input);
-        let (msb, lsb) = u14_to_msb_lsb(masked);
-        TestResult::from_bool(input == msb_lsb_to_u14(msb, lsb))
+    fn test_all_msb_lsb() {
+        for i in 0..65535 { // should be 0..65536
+            let (msb, lsb) = u14_to_msb_lsb(i);
+            assert_eq!(msb_lsb_to_u14(msb, lsb), mask14(i))
+        }
     }
 
     #[test]
@@ -140,17 +131,14 @@ mod tests {
     }
 
     #[test]
-    fn test_qc_status_byte() {
-        QuickCheck::new().tests(1000).quickcheck(qc_status_byte as fn(u8, Channel) -> TestResult);
-    }
-
-    fn qc_status_byte(status: u8, channel: Channel) -> TestResult {
-        if status >= 16 {
-            TestResult::discard()
-        }
-        else {
-            let converted = from_status_byte(status_byte(status, channel));
-            TestResult::from_bool((status, channel) == converted)
+    fn test_all_status_byte() {
+        use std::num::from_u8;
+        for status in 0..16 {
+            for ch in 0..16 {
+                let channel = from_u8(ch).unwrap();
+                let converted = from_status_byte(status_byte(status, channel));
+                assert_eq!((status, channel), converted);
+            }
         }
     }
 }
