@@ -91,7 +91,7 @@ impl ToRawMessages for Message {
             &SysEx(manufacturer, ref data) => {
                 let mut output = Vec::new();
                 output.push(SYSEX);
-                output.push_all(manufacturer.to_u7s().as_slice());
+                output.extend(manufacturer.to_u7s());
                 output.extend(data.iter().map(|d| mask7(*d)));
                 output.push(SYSEX_EOX);
                 output.into_iter().map(|d| Raw(d)).collect()

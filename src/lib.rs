@@ -5,7 +5,7 @@
 
 //! Midi types and traits for Rust
 
-#![feature(plugin, core, collections, test, custom_derive)]
+#![feature(core, test)]
 
 #[cfg(test)] extern crate test;
 
