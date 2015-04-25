@@ -10,3 +10,6 @@ repository = "https://github.com/samdoshi/midi-rs"
 documentation = "http://samdoshi.github.io/midi-rs/midi/index.html"
 keywords = ["midi", "music", "audio"]
 
+[dependencies]
+num = "*"
+

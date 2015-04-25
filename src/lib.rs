@@ -5,9 +5,7 @@
 
 //! Midi types and traits for Rust
 
-#![feature(core, test)]
-
-#[cfg(test)] extern crate test;
+extern crate num;
 
 pub use types::{Channel, U7, U14};
 pub use Channel::{Ch1,  Ch2,  Ch3,  Ch4,  Ch5,  Ch6,  Ch7,  Ch8,

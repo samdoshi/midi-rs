@@ -3,8 +3,6 @@
 // Licensed under the MIT License <LICENSE or http://opensource.org/licenses/MIT>.
 // This file may not be copied, modified, or distributed except according to those terms.
 
-use std::num::from_u8;
-
 use super::types::{Channel, U7, U14};
 
 /// 7 bit mask
@@ -42,8 +40,9 @@ pub fn status_byte(status: u8, channel: Channel) -> u8 {
 /// Seperate the status from the channel no.
 #[inline]
 pub fn from_status_byte(sb: u8) -> (u8, Channel) {
+    use num::FromPrimitive;
     let status = (sb & 0b11110000) >> 4;
-    let channel = from_u8(sb & 0b00001111).unwrap();
+    let channel = FromPrimitive::from_u8(sb & 0b00001111).unwrap();
     (status, channel)
 }
 
@@ -132,10 +131,10 @@ mod tests {
 
     #[test]
     fn test_all_status_byte() {
-        use std::num::from_u8;
+        use num::FromPrimitive;
         for status in 0..16 {
             for ch in 0..16 {
-                let channel = from_u8(ch).unwrap();
+                let channel = FromPrimitive::from_u8(ch).unwrap();
                 let converted = from_status_byte(status_byte(status, channel));
                 assert_eq!((status, channel), converted);
             }
