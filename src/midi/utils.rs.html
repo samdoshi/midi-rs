@@ -184,14 +184,11 @@
 <span id="142">142</span>
 <span id="143">143</span>
 <span id="144">144</span>
-<span id="145">145</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright 2015 Sam Doshi (sam@metal-fish.co.uk)</span>
 <span class='comment'>//</span>
 <span class='comment'>// Licensed under the MIT License &lt;LICENSE or http://opensource.org/licenses/MIT&gt;.</span>
 <span class='comment'>// This file may not be copied, modified, or distributed except according to those terms.</span>
-
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>::<span class='ident'>from_u8</span>;
 
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>types</span>::{<span class='ident'>Channel</span>, <span class='ident'>U7</span>, <span class='ident'>U14</span>};
 
@@ -230,8 +227,9 @@
 <span class='doccomment'>/// Seperate the status from the channel no.</span>
 <span class='attribute'>#[<span class='ident'>inline</span>]</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>from_status_byte</span>(<span class='ident'>sb</span>: <span class='ident'>u8</span>) <span class='op'>-&gt;</span> (<span class='ident'>u8</span>, <span class='ident'>Channel</span>) {
+    <span class='kw'>use</span> <span class='ident'>num</span>::<span class='ident'>FromPrimitive</span>;
     <span class='kw'>let</span> <span class='ident'>status</span> <span class='op'>=</span> (<span class='ident'>sb</span> <span class='kw-2'>&amp;</span> <span class='number'>0b11110000</span>) <span class='op'>&gt;&gt;</span> <span class='number'>4</span>;
-    <span class='kw'>let</span> <span class='ident'>channel</span> <span class='op'>=</span> <span class='ident'>from_u8</span>(<span class='ident'>sb</span> <span class='kw-2'>&amp;</span> <span class='number'>0b00001111</span>).<span class='ident'>unwrap</span>();
+    <span class='kw'>let</span> <span class='ident'>channel</span> <span class='op'>=</span> <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u8</span>(<span class='ident'>sb</span> <span class='kw-2'>&amp;</span> <span class='number'>0b00001111</span>).<span class='ident'>unwrap</span>();
     (<span class='ident'>status</span>, <span class='ident'>channel</span>)
 }
 
@@ -320,10 +318,10 @@
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
     <span class='kw'>fn</span> <span class='ident'>test_all_status_byte</span>() {
-        <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>::<span class='ident'>from_u8</span>;
+        <span class='kw'>use</span> <span class='ident'>num</span>::<span class='ident'>FromPrimitive</span>;
         <span class='kw'>for</span> <span class='ident'>status</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>16</span> {
             <span class='kw'>for</span> <span class='ident'>ch</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>16</span> {
-                <span class='kw'>let</span> <span class='ident'>channel</span> <span class='op'>=</span> <span class='ident'>from_u8</span>(<span class='ident'>ch</span>).<span class='ident'>unwrap</span>();
+                <span class='kw'>let</span> <span class='ident'>channel</span> <span class='op'>=</span> <span class='ident'>FromPrimitive</span>::<span class='ident'>from_u8</span>(<span class='ident'>ch</span>).<span class='ident'>unwrap</span>();
                 <span class='kw'>let</span> <span class='ident'>converted</span> <span class='op'>=</span> <span class='ident'>from_status_byte</span>(<span class='ident'>status_byte</span>(<span class='ident'>status</span>, <span class='ident'>channel</span>));
                 <span class='macro'>assert_eq</span><span class='macro'>!</span>((<span class='ident'>status</span>, <span class='ident'>channel</span>), <span class='ident'>converted</span>);
             }
